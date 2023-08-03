@@ -25,10 +25,10 @@ public class InputManager : Singleton<InputManager>
 
     private void FixedUpdate()
     {
-        if (Input.touchCount == 1)
+        if (Input.touchCount == 1) 
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
+            if (touch.phase == TouchPhase.Began) 
             {
                 firstTouchPosition = touch.position;
                 lastTouchPosition = touch.position;
@@ -90,7 +90,7 @@ public class InputManager : Singleton<InputManager>
     {
         OnTappedPosition.Invoke(firstTouchPosition);
         OnTapped.Invoke();
-        LevelManager.Instance.StartLevel();
+        //LevelManager.Instance.StartLevel();
         Debug.Log("Tapped");
     }
 }
