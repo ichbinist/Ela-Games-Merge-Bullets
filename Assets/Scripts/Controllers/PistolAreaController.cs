@@ -21,9 +21,9 @@ public class PistolAreaController : MonoBehaviour
         {
             foreach (PistolController pistol in Pistols)
             {
-                if(pistol.AssignedBullet == null)
+                if(pistol.AsignedBulletLevel == 0)
                 {
-                    pistol.AssignedBullet = controller;
+                    pistol.AsignedBulletLevel = controller.BulletLevel;
                     AssignedPistols.Add(pistol);
                     Pistols.Remove(pistol);
                     break;

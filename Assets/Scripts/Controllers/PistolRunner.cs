@@ -35,7 +35,7 @@ public class PistolRunner : MonoBehaviour
                 }
                 else
                 {
-                    Pistols[i].transform.localPosition = new Vector3(-0.3f * i + 0.3f, 0f, -0.1f * i);
+                    Pistols[i].transform.localPosition = new Vector3(-0.3f * i - 0.3f, 0f, -0.1f * i);
                 }
             }
         }

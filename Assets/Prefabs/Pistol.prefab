@@ -91,6 +91,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ab245dcad64c34286257dd4a653f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsMovementStarted: 0
+  TripleShot: 0
+  AsignedBulletLevel: 0
+  StartingFireSpeed: 1
+  AdditionalFireSpeed: 0
+  BaseBulletController: {fileID: 5891331874812839356, guid: 9755f3ba04debcf419992d0c07b0d89d, type: 3}
+  Range: 1
 --- !u!1 &3867172742372856976
 GameObject:
   m_ObjectHideFlags: 0
