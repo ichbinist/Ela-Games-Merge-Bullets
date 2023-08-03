@@ -342,6 +342,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984439, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: joystickType
       value: 1
@@ -1680,7 +1684,6 @@ MonoBehaviour:
   OpenPanelAnimationType: 0
   ClosePanelAnimationType: 0
   AnimationDuration: 1
-  TutorialObject: {fileID: 1868696856}
 --- !u!225 &1316584570
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2245,7 +2248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1868696857
 RectTransform:
   m_ObjectHideFlags: 0

@@ -13,7 +13,8 @@ public class BackgroundManager : Singleton<BackgroundManager>
     }
     private void OnDisable()
     {
-        SceneController.Instance.OnSceneLoaded.RemoveListener(SetColor);
+        if(SceneController.Instance)
+            SceneController.Instance.OnSceneLoaded.RemoveListener(SetColor);
     }
     public void SetColor()
     {

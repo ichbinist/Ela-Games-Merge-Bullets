@@ -139,7 +139,6 @@ GameObject:
   - component: {fileID: 113075785}
   - component: {fileID: 113075791}
   - component: {fileID: 113075793}
-  - component: {fileID: 113075792}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -164,7 +163,7 @@ MonoBehaviour:
       m_Calls: []
   firstTouchPosition: {x: 0, y: 0, z: 0}
   lastTouchPosition: {x: 0, y: 0, z: 0}
-  IsUsingJoystick: 1
+  IsUsingJoystick: 0
 --- !u!114 &113075786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,19 +266,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panels: []
---- !u!114 &113075792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113075784}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92955f8abacbfd44db65fc41f13778b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AppKey: 
 --- !u!114 &113075793
 MonoBehaviour:
   m_ObjectHideFlags: 0
