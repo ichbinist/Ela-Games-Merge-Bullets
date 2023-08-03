@@ -27,7 +27,8 @@ public class BasePanel : MonoBehaviour
 
     private void OnDisable()
     {
-        PanelManager.Instance.Panels.Remove(this);
+        if(PanelManager.Instance)
+            PanelManager.Instance.Panels.Remove(this);
     }
     
     [Button]
