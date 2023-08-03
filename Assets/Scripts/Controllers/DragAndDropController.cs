@@ -75,14 +75,23 @@ public class DragAndDropController : MonoBehaviour
                     {
                         if(JSONDataManager.Instance.JSONDATA.Bullets.BulletData[cellIndex].BulletLevel == HoldingBullet.BulletLevel)
                         {
-                            BulletGridManager.Instance.Bullets.BulletData[cellIndex].BulletLevel++;
-                            BulletGridManager.Instance.Bullets.BulletData[HoldingBullet.GridPosition].BulletLevel = 0;
-                            _BulletGridController.BulletControllers.Find(x=>x.GridPosition == cellIndex).BulletLevel++;
-                            _BulletGridController.BulletControllers.Find(x => x.GridPosition == cellIndex).AssignColor();
-                            _BulletGridController.BulletControllers.Remove(HoldingBullet);
-                            Destroy(HoldingBullet.gameObject);
-                            HoldingBullet = null;
-                            JSONDataManager.Instance.SaveData();
+                            if(HoldingBullet.GridPosition == cellIndex)
+                            {
+                                HoldingBullet.transform.position = _BulletGridController.Grid.Cells[HoldingBullet.GridPosition].CellPosition;
+                                HoldingBullet = null;
+                                return;
+                            }
+                            else
+                            {
+                                BulletGridManager.Instance.Bullets.BulletData[cellIndex].BulletLevel++;
+                                BulletGridManager.Instance.Bullets.BulletData[HoldingBullet.GridPosition].BulletLevel = 0;
+                                _BulletGridController.BulletControllers.Find(x => x.GridPosition == cellIndex).BulletLevel++;
+                                _BulletGridController.BulletControllers.Find(x => x.GridPosition == cellIndex).AssignColor();
+                                _BulletGridController.BulletControllers.Remove(HoldingBullet);
+                                Destroy(HoldingBullet.gameObject);
+                                HoldingBullet = null;
+                                JSONDataManager.Instance.SaveData();
+                            }
                         }
                         else
                         {

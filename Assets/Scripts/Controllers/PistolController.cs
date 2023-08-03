@@ -15,6 +15,7 @@ public class PistolController : MonoBehaviour
     public BulletController BaseBulletController;
 
     public float Range = 1f;
+    public Transform PistolBullets;
     private void Update()
     {
         if (IsMovementStarted)
@@ -42,6 +43,7 @@ public class PistolController : MonoBehaviour
     private void Fire(Vector3 direction)
     {
         BulletController localBulletController = Instantiate(BaseBulletController, transform.position, Quaternion.identity);
+        localBulletController.transform.parent = PistolBullets;
         localBulletController.BulletLevel = AsignedBulletLevel;
         localBulletController.AssignColor();
         localBulletController.transform.forward = direction;

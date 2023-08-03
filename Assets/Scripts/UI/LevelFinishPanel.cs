@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
+
 public class LevelFinishPanel : BasePanel
 {
     public UnityEngine.UI.Button LevelFinishButton;
     public UnityEngine.UI.Button LevelFailButton;
     public GameObject SuccessPanel, FailPanel;
+    public TextMeshProUGUI HighscoreText;
     private void OnEnable()
     {
         if (!Managers.Instance) return;
@@ -14,7 +17,7 @@ public class LevelFinishPanel : BasePanel
         LevelManager.Instance.OnLevelFinished.AddListener(ActivateSuccessPanel);
         LevelManager.Instance.OnLevelFailed.AddListener(ActivateFailPanel);
         SceneController.Instance.OnSceneLoaded.AddListener(Deactivate);
-        LevelFinishButton.onClick.AddListener(() => GameManager.Instance.CompleteStage(true));
+        LevelFinishButton.onClick.AddListener(() => { GameManager.Instance.CompleteStage(true); CurrencyManager.Instance.AddCurrency(Mathf.RoundToInt(Mathf.Max(100 * JSONDataManager.Instance.JSONDATA.Highscore, 100))); });
         LevelFailButton.onClick.AddListener(() => { GameManager.Instance.CompleteStage(false); CurrencyManager.Instance.AddCurrency(100); });
         OnPanelDeactivated.AddListener(() => LevelFinishButton.transform.localScale = Vector3.zero);
         OnPanelActivated.AddListener(() => LevelFinishButton.transform.DOScale(Vector3.one, 1f));
@@ -26,7 +29,7 @@ public class LevelFinishPanel : BasePanel
         LevelManager.Instance.OnLevelFinished.RemoveListener(ActivateSuccessPanel);
         LevelManager.Instance.OnLevelFailed.RemoveListener(ActivateFailPanel);
         SceneController.Instance.OnSceneLoaded.RemoveListener(Deactivate);
-        LevelFinishButton.onClick.RemoveListener(() => GameManager.Instance.CompleteStage(true));
+        LevelFinishButton.onClick.RemoveAllListeners();
         LevelFailButton.onClick.RemoveAllListeners();
         OnPanelDeactivated.RemoveListener(() => LevelFinishButton.transform.localScale = Vector3.zero);
         OnPanelActivated.RemoveListener(() => LevelFinishButton.transform.DOScale(Vector3.one, 1f));
@@ -36,6 +39,7 @@ public class LevelFinishPanel : BasePanel
         Activate();
         SuccessPanel.SetActive(true);
         FailPanel.SetActive(false);
+        StartCoroutine(DelayedCall());
     }
 
     public void ActivateFailPanel()
@@ -43,5 +47,11 @@ public class LevelFinishPanel : BasePanel
         Activate();
         SuccessPanel.SetActive(false);
         FailPanel.SetActive(true);
+    }
+
+    IEnumerator DelayedCall()
+    {
+        yield return new WaitForSeconds(0.02f);
+        HighscoreText.SetText((JSONDataManager.Instance.JSONDATA.Highscore * 100).ToString());
     }
 }

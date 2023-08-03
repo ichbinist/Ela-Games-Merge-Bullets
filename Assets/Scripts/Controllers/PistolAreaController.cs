@@ -35,7 +35,7 @@ public class PistolAreaController : MonoBehaviour
 
     private void Update()
     {
-        if(BulletGridController.BulletControllers.All(x=>x == null) && !IsPistolSequenceStarted)
+        if(JSONDataManager.Instance.JSONDATA.Bullets.BulletData.Any(x=>x.BulletLevel>0) && BulletGridController.BulletControllers.All(x=>x == null) && !IsPistolSequenceStarted)
         {
             PistolRunner.Pistols = AssignedPistols.ToList();
             foreach (PistolController pistol in AssignedPistols)
