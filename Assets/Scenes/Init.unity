@@ -213,8 +213,11 @@ MonoBehaviour:
       m_Calls: []
   Levels:
   - LevelType: 0
-    LevelID: Level - Test
+    LevelID: Level - 1
     BackgroundColor: {r: 0, g: 0.7764706, b: 1, a: 1}
+  - LevelType: 0
+    LevelID: Level - 2
+    BackgroundColor: {r: 0, g: 1, b: 0.4240532, a: 1}
   CurrentLevel:
     LevelType: 0
     LevelID: 
@@ -374,3 +377,4 @@ MonoBehaviour:
       - BulletLevel: 0
       - BulletLevel: 0
     Currency: 0
+    Highscore: 0

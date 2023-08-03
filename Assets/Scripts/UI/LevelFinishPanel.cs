@@ -17,8 +17,8 @@ public class LevelFinishPanel : BasePanel
         LevelManager.Instance.OnLevelFinished.AddListener(ActivateSuccessPanel);
         LevelManager.Instance.OnLevelFailed.AddListener(ActivateFailPanel);
         SceneController.Instance.OnSceneLoaded.AddListener(Deactivate);
-        LevelFinishButton.onClick.AddListener(() => { GameManager.Instance.CompleteStage(true); CurrencyManager.Instance.AddCurrency(Mathf.RoundToInt(Mathf.Max(100 * JSONDataManager.Instance.JSONDATA.Highscore, 100))); });
-        LevelFailButton.onClick.AddListener(() => { GameManager.Instance.CompleteStage(false); CurrencyManager.Instance.AddCurrency(100); });
+        LevelFinishButton.onClick.AddListener(LevelFinishButtonEvent);
+        LevelFailButton.onClick.AddListener(LevelFailButtonEvent);
         OnPanelDeactivated.AddListener(() => LevelFinishButton.transform.localScale = Vector3.zero);
         OnPanelActivated.AddListener(() => LevelFinishButton.transform.DOScale(Vector3.one, 1f));
     }
@@ -49,9 +49,21 @@ public class LevelFinishPanel : BasePanel
         FailPanel.SetActive(true);
     }
 
+    private void LevelFinishButtonEvent()
+    {
+        GameManager.Instance.CompleteStage(true); 
+        CurrencyManager.Instance.AddCurrency(Mathf.RoundToInt(Mathf.Max(100 * JSONDataManager.Instance.JSONDATA.Highscore, 100)));
+    }
+
+    private void LevelFailButtonEvent()
+    {
+        GameManager.Instance.CompleteStage(false); 
+        CurrencyManager.Instance.AddCurrency(100);
+    }
+
     IEnumerator DelayedCall()
     {
         yield return new WaitForSeconds(0.02f);
-        HighscoreText.SetText((JSONDataManager.Instance.JSONDATA.Highscore * 100).ToString());
+        HighscoreText.SetText((Mathf.RoundToInt(JSONDataManager.Instance.JSONDATA.Highscore * 10)).ToString("00000"));
     }
 }

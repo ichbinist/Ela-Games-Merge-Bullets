@@ -11,10 +11,12 @@ public class GameManager : Singleton<GameManager>
     {
         if (state)
         {
+            OnGameFinishes.Invoke(true);
             LevelManager.Instance.LoadNextLevel();
         }
         else
         {
+            OnGameFinishes.Invoke(false);
             LevelManager.Instance.ReloadLevel();
         }
     }
