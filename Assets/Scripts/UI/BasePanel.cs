@@ -34,8 +34,6 @@ public class BasePanel : MonoBehaviour
     [Button]
     public void Activate()
     {
-        
-
         CanvasGroup.alpha = 1;
 
         if(OpenPanelAnimationType == PanelOpenAnimationType.Grow)
@@ -58,7 +56,6 @@ public class BasePanel : MonoBehaviour
             if (!IsActive)
                 OnPanelActivated.Invoke();
             IsActive = true;
-
         }
     }
 
