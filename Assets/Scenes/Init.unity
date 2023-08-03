@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 959f96f9c6985474383fb44f604286ad, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04615834, g: 0.5519655, b: 0.8302261, a: 1}
+  m_IndirectSpecularColor: {r: 0.04615834, g: 0.5532154, b: 0.8302261, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,6 +139,8 @@ GameObject:
   - component: {fileID: 113075785}
   - component: {fileID: 113075791}
   - component: {fileID: 113075793}
+  - component: {fileID: 113075792}
+  - component: {fileID: 113075795}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -206,6 +208,9 @@ MonoBehaviour:
   OnLevelFinished:
     m_PersistentCalls:
       m_Calls: []
+  OnLevelFailed:
+    m_PersistentCalls:
+      m_Calls: []
   Levels:
   - LevelType: 0
     LevelID: Level - Test
@@ -237,7 +242,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1283446674}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -266,6 +272,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panels: []
+--- !u!114 &113075792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113075784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cdd1429002a8a47bf530c42efaac49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullets:
+    BulletData:
+    - BulletLevel: 0
+    - BulletLevel: 0
+    - BulletLevel: 0
+    - BulletLevel: 0
+    - BulletLevel: 0
+    - BulletLevel: 0
+    - BulletLevel: 0
+    - BulletLevel: 0
 --- !u!114 &113075793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,3 +307,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMaterial: {fileID: 2100000, guid: 959f96f9c6985474383fb44f604286ad, type: 2}
+--- !u!114 &113075795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113075784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d9ead90654e7542b41fb3211ca8e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TempCurrency: 0
+--- !u!1 &1283446673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1283446674}
+  - component: {fileID: 1283446675}
+  m_Layer: 0
+  m_Name: JSONDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1283446674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283446673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 113075789}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1283446675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283446673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a805db8e8a3e742b0cfe0c0aefd411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JSONDATA:
+    Bullets:
+      BulletData:
+      - BulletLevel: 0
+      - BulletLevel: 0
+      - BulletLevel: 0
+      - BulletLevel: 0
+      - BulletLevel: 0
+      - BulletLevel: 0
+      - BulletLevel: 0
+      - BulletLevel: 0
+    Currency: 0
