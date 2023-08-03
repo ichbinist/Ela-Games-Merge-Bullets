@@ -92,4 +92,5 @@ public class JSONDATA
 {
     public Bullets Bullets = new Bullets();
     public int Currency;
+    public float Highscore;
 }

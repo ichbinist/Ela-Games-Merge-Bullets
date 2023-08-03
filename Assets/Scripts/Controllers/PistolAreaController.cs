@@ -21,9 +21,9 @@ public class PistolAreaController : MonoBehaviour
         {
             foreach (PistolController pistol in Pistols)
             {
-                if(pistol.AssignedBullet == null)
+                if(pistol.AsignedBulletLevel == 0)
                 {
-                    pistol.AssignedBullet = controller;
+                    pistol.AsignedBulletLevel = controller.BulletLevel;
                     AssignedPistols.Add(pistol);
                     Pistols.Remove(pistol);
                     break;
@@ -35,7 +35,7 @@ public class PistolAreaController : MonoBehaviour
 
     private void Update()
     {
-        if(BulletGridController.BulletControllers.All(x=>x == null) && !IsPistolSequenceStarted)
+        if(JSONDataManager.Instance.JSONDATA.Bullets.BulletData.Any(x=>x.BulletLevel>0) && BulletGridController.BulletControllers.All(x=>x == null) && !IsPistolSequenceStarted)
         {
             PistolRunner.Pistols = AssignedPistols.ToList();
             foreach (PistolController pistol in AssignedPistols)

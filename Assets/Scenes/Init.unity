@@ -213,8 +213,11 @@ MonoBehaviour:
       m_Calls: []
   Levels:
   - LevelType: 0
-    LevelID: Level - Test
+    LevelID: Level - 1
     BackgroundColor: {r: 0, g: 0.7764706, b: 1, a: 1}
+  - LevelType: 0
+    LevelID: Level - 2
+    BackgroundColor: {r: 0, g: 1, b: 0.4240532, a: 1}
   CurrentLevel:
     LevelType: 0
     LevelID: 
@@ -319,7 +322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d9ead90654e7542b41fb3211ca8e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TempCurrency: 0
 --- !u!1 &1283446673
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,3 +377,4 @@ MonoBehaviour:
       - BulletLevel: 0
       - BulletLevel: 0
     Currency: 0
+    Highscore: 0

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CurrencyManager : Singleton<CurrencyManager>
 {
-    public int TempCurrency = 0;
     private void OnEnable()
     {
         JSONDataManager.Instance.OnDataLoaded += InitializeData;

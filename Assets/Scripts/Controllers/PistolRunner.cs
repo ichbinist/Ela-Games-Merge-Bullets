@@ -13,9 +13,12 @@ public class PistolRunner : MonoBehaviour
 
     public float MaxWidth = 4.5f;
 
-    private bool IsMovementStarted = false;
+    public bool IsMovementStarted = false;
 
     private float StartingLocalPistolPosition = 0;
+
+    public bool IsShieldActive = false;
+    public GameObject ShieldObject;
     public void StartMovement()
     {
         Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.Priority = -2;
@@ -35,11 +38,18 @@ public class PistolRunner : MonoBehaviour
                 }
                 else
                 {
-                    Pistols[i].transform.localPosition = new Vector3(-0.3f * i + 0.3f, 0f, -0.1f * i);
+                    Pistols[i].transform.localPosition = new Vector3(-0.3f * i - 0.3f, 0f, -0.1f * i);
                 }
             }
         }
         IsMovementStarted = true;
+    }
+
+    public void ActivateShield()
+    {
+        IsShieldActive = true;
+        ShieldObject.SetActive(true);
+        StartCoroutine(ShieldTimer());
     }
 
     private void Update()
@@ -65,5 +75,12 @@ public class PistolRunner : MonoBehaviour
         Vector2 ClampedSwerveAmount = new Vector2(UnclampedWorldSwerveAmount.x * SwerveSpeed, 0f);
 
         PistolHolder.transform.localPosition = new Vector3(Mathf.Clamp(StartingLocalPistolPosition + ClampedSwerveAmount.x, -MaxWidth, MaxWidth), PistolHolder.transform.localPosition.y, 0f);
+    }
+
+    IEnumerator ShieldTimer()
+    {
+        yield return new WaitForSeconds(3);
+        IsShieldActive = false;
+        ShieldObject.SetActive(false);
     }
 }
