@@ -9,6 +9,8 @@ public class LevelManager : Singleton<LevelManager>
     public UnityEvent OnLevelStarted = new UnityEvent();
     [HideInInspector]
     public UnityEvent OnLevelFinished = new UnityEvent();
+    [HideInInspector]
+    public UnityEvent OnLevelFailed = new UnityEvent();
 
     public List<Level> Levels = new List<Level>();
     [HideInInspector]
@@ -28,6 +30,13 @@ public class LevelManager : Singleton<LevelManager>
         if (!IsLevelStarted) return;
         IsLevelStarted = false;
         OnLevelFinished.Invoke();
+    }
+
+    public void FailLevel()
+    {
+        if (!IsLevelStarted) return;
+        IsLevelStarted = false;
+        OnLevelFailed.Invoke();
     }
 
     public void LoadLastLevel()
