@@ -19,7 +19,8 @@ public class EndingLineController : MonoBehaviour
 
     private void OnDisable()
     {
-        LevelManager.Instance.OnLevelFinished.RemoveListener(CalculateDistanceAndApply);
+        if(LevelManager.Instance)
+            LevelManager.Instance.OnLevelFinished.RemoveListener(CalculateDistanceAndApply);
     }
 
     private void CalculateDistanceAndApply()
